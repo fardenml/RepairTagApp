@@ -21,6 +21,8 @@ public class PrintActivity extends AppCompatActivity {
     public Button print, home;
     public TextView printStatus, showID, showName, showInstrument, showBrand, showSerial;
 
+    String tagID, name, instrument, brand, serial;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,19 +38,19 @@ public class PrintActivity extends AppCompatActivity {
         showBrand = findViewById(R.id.textShowBrand);
         showSerial = findViewById(R.id.textShowSerial);
 
-        String tagID = "Tag ID: " + Info.id;
+        tagID = "Tag ID: " + Info.id;
         showID.setText(tagID);
 
-        String name = "Name: " + Info.firstName + " " + Info.lastName;
+        name = "Name: " + Info.firstName + " " + Info.lastName;
         showName.setText(name);
 
-        String instrument = "Instrument: " + Info.brand;
+        instrument = "Instrument: " + Info.brand;
         showInstrument.setText(instrument);
 
-        String brand = "Brand: " + Info.instrument;
+        brand = "Brand: " + Info.instrument;
         showBrand.setText(brand);
 
-        String serial = "Serial Number: " + Info.serialNumber;
+        serial = "Serial Number: " + Info.serialNumber;
         showSerial.setText(serial);
     }
 
@@ -57,6 +59,12 @@ public class PrintActivity extends AppCompatActivity {
             case R.id.buttonPrint:
                 printStatus.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
                 printStatus.setText("Print Job Sent!");
+
+                String textToPrint = "<IMAGE>http://i44.photobucket.com/albums/f41/MidstateMusic/midstate_header_200x200_zpsv8bolg7k.png<BR><BIG>" + tagID + "<BR><SMALL>" + name + "<BR><SMALL>" + instrument + "<BR><SMALL>" + brand + "<BR><SMALL>" + serial;
+                Intent intent = new Intent("pe.diegoveloper.printing");
+                intent.setType("text/plain");
+                intent.putExtra(android.content.Intent.EXTRA_TEXT,textToPrint);
+                startActivity(intent);
                 break;
             case R.id.buttonHome:
                 startActivity(new Intent(this, MainActivity.class));
