@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
 
         TextView main = findViewById(R.id.textViewMain);
 
-        String formattedTextMain = "<body><h4>Current User: " + Info.employeeFirstName + " " + Info.employeeLastName + "<br><br> </br>" + getString(R.string.main_instructions) + "</br>" + "</h4><p>Technical Assistance Contact: <br>Michael Farden</br>" +
+        String formattedTextMain = "<body><h4>Current User: " + Info.employeeFirstName + " " + Info.employeeLastName + "<br><br> </br>" + getString(R.string.main_instructions) + "</br>" + "</h4><p>Technical Assistance: <br>Michael Farden</br>" +
                 "<br>Phone: (315) 532-3602</br> <br>Email: mfarden@gmail.com</br> </p></body>";
 
         main.setText(Html.fromHtml(formattedTextMain));

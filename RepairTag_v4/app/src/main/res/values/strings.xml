@@ -9,9 +9,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="nav_header_name">Midstate Music of CNY Inc. (2018)</string>
+    <string name="nav_header_name">Midstate Music (2018)</string>
 
-    <string name="pin_title">Enter your 4-digit employee pin to continue.</string>
+    <string name="pin_title">Enter your 4-digit employee pin.</string>
 
     <string name="main_instructions">Press the upper left icon or swipe from the left to view the menu. There you can create, edit, or print a repair tag. You can press the icon in the
         lower right hand corner to create a new repair tag. </string>
