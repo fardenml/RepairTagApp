@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,8 @@ import com.midstatemusic.repairtag_v4.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,10 @@ public class MainActivity extends AppCompatActivity
                 "<br>Phone: (315) 532-3602</br> <br>Email: mfarden@gmail.com</br> </p></body>";
 
         main.setText(Html.fromHtml(formattedTextMain));
+
+        if (!Info.employeeID.equals(Info.adminID)) {
+            hideItem();
+        }
     }
 
     @Override
@@ -89,9 +96,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
                 break;
             case R.id.nav_settings:
-                if (Info.employeeID.equals(Info.adminID)) {
-                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                }
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
             case R.id.nav_logout:
                 startActivity(new Intent(MainActivity.this, PinActivity.class));
@@ -109,5 +114,12 @@ public class MainActivity extends AppCompatActivity
             }
         }, 50);
         return true;
+    }
+
+    private void hideItem()
+    {
+        navigationView = findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_settings).setVisible(false);
     }
 }

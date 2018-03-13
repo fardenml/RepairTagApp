@@ -87,7 +87,7 @@ public class SearchActivity extends AppCompatActivity {
                             startActivity(new Intent(this, InfoActivity.class));
                         }
                     } else {
-                        status.setText("ID not found!\nPlease try again!");
+                        status.setText("ID not found. Please try again!");
                     }
                     DatabaseConnections.con.close();
 
