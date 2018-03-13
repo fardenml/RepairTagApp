@@ -13,8 +13,7 @@
 
     <string name="pin_title">Enter your 4-digit employee pin to continue.</string>
 
-    <string name="main_title">to the Midstate Music Repair Tag App!</string>
-    <string name="main_instructions">Press the upper left icon or swipe from the left to view the menu. From here you can create, edit, or print a repair tag. You can also press the icon in the
+    <string name="main_instructions">Press the upper left icon or swipe from the left to view the menu. There you can create, edit, or print a repair tag. You can press the icon in the
         lower right hand corner to create a new repair tag. </string>
 
     <string name="action_home">Home</string>

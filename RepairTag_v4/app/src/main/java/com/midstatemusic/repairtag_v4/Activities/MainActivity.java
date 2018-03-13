@@ -48,14 +48,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        TextView title = findViewById(R.id.textViewTitle);
         TextView main = findViewById(R.id.textViewMain);
 
-        String formattedTextTitle = "<body><h1>Welcome " + Info.employeeFirstName + " " + Info.employeeLastName + " " + getString(R.string.main_title) + "</h1></body>";
-        String formattedTextMain = "<body><p><h4>" + getString(R.string.main_instructions) + "</h4></p><p>For Technical Assistance Contact: <br>Michael Farden</br>" +
+        String formattedTextMain = "<body><h4>Current User: " + Info.employeeFirstName + " " + Info.employeeLastName + "<br><br> </br>" + getString(R.string.main_instructions) + "</br>" + "</h4><p>Technical Assistance Contact: <br>Michael Farden</br>" +
                 "<br>Phone: (315) 532-3602</br> <br>Email: mfarden@gmail.com</br> </p></body>";
 
-        title.setText(Html.fromHtml(formattedTextTitle));
         main.setText(Html.fromHtml(formattedTextMain));
     }
 
