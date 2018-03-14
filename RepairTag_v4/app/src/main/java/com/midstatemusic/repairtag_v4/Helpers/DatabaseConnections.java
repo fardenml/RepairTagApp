@@ -11,7 +11,7 @@ public class DatabaseConnections {
 
     private final static String user = "music";
     private final static String password = "clarkson2018";
-    private final static String ip = "jdbc:mysql://192.168.1.11:3306/Midstate";
+    private final static String ip = "jdbc:mysql://192.168.1.2:3306/Midstate";
 
 
     public static Boolean dbConnect(){
