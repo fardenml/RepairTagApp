@@ -55,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
                     DatabaseConnections.con.close();
                 } catch(Exception e){
                     Log.d("SQL ERROR", e.toString());
-                    editAdminId.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
+                    editAdminId.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
                 }
 
                 break;

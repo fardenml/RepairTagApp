@@ -1,6 +1,7 @@
 package com.midstatemusic.repairtag_v4.Fragments;
 
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,9 +32,9 @@ import java.sql.Statement;
 import java.util.Random;
 
 public class DescriptionFragment extends Fragment implements View.OnClickListener{
-    public Button submit;
+    public static Button submit, dueDate;
     public Spinner status;
-    public static EditText description, dueDate, price;
+    public static EditText description, price;
     public static CheckBox mpCoverage;
 
     Boolean connectionStatus;
@@ -49,8 +50,10 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
         submit = view.findViewById(R.id.buttonSubmit);
         submit.setOnClickListener(this);
 
+        dueDate = view.findViewById(R.id.buttonDueDate);
+        dueDate.setOnClickListener(this);
+
         description = view.findViewById(R.id.editDescription);
-        dueDate = view.findViewById(R.id.editDueDate);
         price = view.findViewById(R.id.editPrice);
         mpCoverage = view.findViewById(R.id.checkBoxMPCoverage);
 
@@ -60,9 +63,10 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
         status.setAdapter(adapter);
 
         String compareValue = Info.status;
+        String date = "Due: " + Info.dueDate;
         if (Info.editing) {
             description.setText(Info.description);
-            dueDate.setText(Info.dueDate);
+            dueDate.setText(date);
             price.setText(Info.price);
             mpCoverage.setChecked(Info.mpCoverage);
             int spinnerPosition = adapter.getPosition(compareValue);
@@ -104,7 +108,6 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
                                 Info.mouthPiece = InstrumentFragment.mouthPiece.isChecked();
 
                                 Info.description = description.getText().toString();
-                                Info.dueDate = dueDate.getText().toString();
                                 Info.price = price.getText().toString();
                                 Info.mpCoverage = mpCoverage.isChecked();
 
@@ -142,6 +145,11 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
+                break;
+
+            case R.id.buttonDueDate:
+                DialogFragment newFragment = new DatePickerFragment();
+                newFragment.show(getActivity().getFragmentManager(), "datePicker");
                 break;
 
             default:

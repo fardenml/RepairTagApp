@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 public class PrintActivity extends AppCompatActivity {
 
     public Button print, home;
-    public TextView printStatus, showID, showName, showInstrument, showBrand, showSerial;
+    public TextView printStatus, showID, showName, showInstrument, showBrand, showSerial, showDueDate, showPrice;
 
     String tagID, name, instrument, brand, serial, dueDate, price;
 
@@ -37,6 +37,8 @@ public class PrintActivity extends AppCompatActivity {
         showInstrument = findViewById(R.id.textShowInstrument);
         showBrand = findViewById(R.id.textShowBrand);
         showSerial = findViewById(R.id.textShowSerial);
+        showDueDate = findViewById(R.id.textShowDueDate);
+        showPrice = findViewById(R.id.textShowPrice);
 
         tagID = "Tag ID: " + Info.id;
         showID.setText(tagID);
@@ -54,8 +56,10 @@ public class PrintActivity extends AppCompatActivity {
         showSerial.setText(serial);
 
         dueDate = "Due Date: " + Info.dueDate;
+        showDueDate.setText(dueDate);
 
         price = "Price: $" + Info.price;
+        showPrice.setText(price);
     }
 
     public void onClick(View v) {

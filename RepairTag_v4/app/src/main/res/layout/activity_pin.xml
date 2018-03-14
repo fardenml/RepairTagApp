@@ -44,7 +44,7 @@
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/colorRed"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -79,4 +79,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPin" />
+
 </android.support.constraint.ConstraintLayout>
