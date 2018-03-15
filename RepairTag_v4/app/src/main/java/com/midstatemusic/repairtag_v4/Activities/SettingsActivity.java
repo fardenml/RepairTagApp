@@ -57,11 +57,11 @@ public class SettingsActivity extends AppCompatActivity {
                     if (editPassword.getText().toString().length() != 0)
                         DatabaseConnections.setPassword(editPassword.getText().toString());
                     if (editIP.getText().toString().length() != 0)
-                        DatabaseConnections.setPassword(editIP.getText().toString());
+                        DatabaseConnections.setIP(editIP.getText().toString());
                     if (editPort.getText().toString().length() != 0)
-                        DatabaseConnections.setPassword(editPort.getText().toString());
+                        DatabaseConnections.setPort(editPort.getText().toString());
                     if (editDatabase.getText().toString().length() != 0)
-                        DatabaseConnections.setPassword(editDatabase.getText().toString());
+                        DatabaseConnections.setDatabase(editDatabase.getText().toString());
 
                     editUser.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
                     editPassword.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
