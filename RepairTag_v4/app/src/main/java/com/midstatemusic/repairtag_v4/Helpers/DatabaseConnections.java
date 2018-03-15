@@ -9,9 +9,11 @@ public class DatabaseConnections {
     public static Connection con;
     public static Statement stmt;
 
-    private final static String user = "music";
-    private final static String password = "clarkson2018";
-    private final static String ip = "jdbc:mysql://192.168.1.2:3306/Midstate";
+    private static String user = "music";
+    private static String password = "clarkson2018";
+    private static String ip = "192.168.1.2";
+    private static String port = "3306";
+    private static String database = "Midstate";
 
 
     public static Boolean dbConnect(){
@@ -20,13 +22,47 @@ public class DatabaseConnections {
         StrictMode.setThreadPolicy(policy);
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(ip, user, password);
+            con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + database, user, password);
             stmt = con.createStatement();
             return true;
         } catch (Exception e) {
             Log.d("CONNECTION ERROR", e.toString());
             return false;
         }
+    }
+
+    public static void setUser(String newUser){
+        user = newUser;
+    }
+
+    public static void setPassword(String newPassword){
+        password = newPassword;
+    }
+
+    public static void setIP(String newIP, String newPort, String newDatabase){
+        port = newPort;
+        database = newDatabase;
+        ip = newIP;
+    }
+
+    public static String getUser(){
+        return user;
+    }
+
+    public static String getPassword(){
+        return password;
+    }
+
+    public static String getIP(){
+        return ip;
+    }
+
+    public static String getPort(){
+        return port;
+    }
+
+    public static String getDatabase(){
+        return database;
     }
 
 
