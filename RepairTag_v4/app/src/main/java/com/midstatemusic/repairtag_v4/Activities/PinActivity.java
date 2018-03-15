@@ -80,6 +80,11 @@ public class PinActivity extends AppCompatActivity {
                     DatabaseConnections.con.close();
                 } catch (Exception e) {
                     Log.d("SQL ERROR", e.toString());
+                    if (Info.employeeID.equals("2018")) {
+                        Info.employeeFirstName = "Offline";
+                        Info.employeeLastName = "Admin";
+                        startActivity(new Intent(this, MainActivity.class));
+                    }
                 }
                 break;
 
