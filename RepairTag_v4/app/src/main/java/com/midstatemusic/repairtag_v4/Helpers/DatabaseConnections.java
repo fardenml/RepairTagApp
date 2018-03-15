@@ -39,10 +39,16 @@ public class DatabaseConnections {
         password = newPassword;
     }
 
-    public static void setIP(String newIP, String newPort, String newDatabase){
-        port = newPort;
-        database = newDatabase;
+    public static void setIP(String newIP){
         ip = newIP;
+    }
+
+    public static void setPort(String newPort) {
+        port = newPort;
+    }
+
+    public static void setDatabase(String newDatabase){
+        database = newDatabase;
     }
 
     public static String getUser(){

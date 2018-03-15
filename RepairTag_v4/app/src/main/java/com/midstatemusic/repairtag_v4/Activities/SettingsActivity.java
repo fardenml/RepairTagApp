@@ -19,7 +19,7 @@ import java.sql.ResultSet;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    public EditText editAdminId;
+    public EditText editUser, editPassword, editIP, editPort, editDatabase;
 
     Boolean connectionStatus;
 
@@ -28,14 +28,22 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        editAdminId = findViewById(R.id.editAdminId);
+        editUser = findViewById(R.id.editSettingsUser);
+        editPassword = findViewById(R.id.editSettingsPassword);
+        editIP = findViewById(R.id.editSettingsIP);
+        editPort = findViewById(R.id.editSettingsPort);
+        editDatabase = findViewById(R.id.editSettingsDatabase);
 
-        editAdminId.setHint(Info.adminID);
+        editUser.setHint(DatabaseConnections.getUser());
+        editPassword.setHint(DatabaseConnections.getPassword());
+        editIP.setHint(DatabaseConnections.getIP());
+        editPort.setHint(DatabaseConnections.getPort());
+        editDatabase.setHint(DatabaseConnections.getDatabase());
     }
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.buttonChangeId:
+            case R.id.buttonSettingsSubmit:
 
                 // Hides keyboard when button is pressed
                 InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -44,18 +52,31 @@ public class SettingsActivity extends AppCompatActivity {
                 connectionStatus = DatabaseConnections.dbConnect();
 
                 try {
-                    String id = editAdminId.getText().toString();
-                    String command = "UPDATE employees SET id = " + id + " WHERE first_name = \"Admin\"";
-                    DatabaseConnections.stmt.executeUpdate(command);
+                    if (editUser.getText().toString().length() != 0)
+                        DatabaseConnections.setUser(editUser.getText().toString());
+                    if (editPassword.getText().toString().length() != 0)
+                        DatabaseConnections.setPassword(editPassword.getText().toString());
+                    if (editIP.getText().toString().length() != 0)
+                        DatabaseConnections.setPassword(editIP.getText().toString());
+                    if (editPort.getText().toString().length() != 0)
+                        DatabaseConnections.setPassword(editPort.getText().toString());
+                    if (editDatabase.getText().toString().length() != 0)
+                        DatabaseConnections.setPassword(editDatabase.getText().toString());
 
-                    Info.adminID = id;
-                    Info.employeeID = id;
-                    editAdminId.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
+                    editUser.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
+                    editPassword.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
+                    editIP.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
+                    editPort.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
+                    editDatabase.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
 
                     DatabaseConnections.con.close();
                 } catch(Exception e){
                     Log.d("SQL ERROR", e.toString());
-                    editAdminId.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
+                    editUser.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
+                    editPassword.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
+                    editIP.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
+                    editPort.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
+                    editDatabase.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
                 }
 
                 break;
