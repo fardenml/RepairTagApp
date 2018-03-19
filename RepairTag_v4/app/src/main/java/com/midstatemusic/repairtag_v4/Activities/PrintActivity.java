@@ -21,7 +21,7 @@ public class PrintActivity extends AppCompatActivity {
     public Button print, home;
     public TextView printStatus, showID, showName, showInstrument, showBrand, showSerial, showDueDate, showPrice;
 
-    String tagID, name, instrument, brand, serial, dueDate, price;
+    String tagID, name, phone, district, building, teacher, instrument, brand, serial, dueDate, price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,14 @@ public class PrintActivity extends AppCompatActivity {
         name = "Name: " + Info.firstName + " " + Info.lastName;
         showName.setText(name);
 
+        phone = "Phone: " + Info.phone;
+
+        district = "School District: " + Info.schoolDistrict;
+
+        building = "School Building: " + Info.schoolBuilding;
+
+        teacher = "Teacher: " + Info.teacher;
+
         instrument = "Instrument: " + Info.instrument;
         showInstrument.setText(instrument);
 
@@ -68,7 +76,7 @@ public class PrintActivity extends AppCompatActivity {
                 printStatus.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
                 printStatus.setText("Print Job Sent!");
 
-                String textToPrint = "<IMAGE>http://i44.photobucket.com/albums/f41/MidstateMusic/midstate_header_200x200_zpsv8bolg7k.png<BR><BIG>" + tagID + "<BR><SMALL>" + name + "<BR><SMALL>" + instrument + "<BR><SMALL>" + brand + "<BR><SMALL>" + serial + "<BR><SMALL>" + dueDate + "<BR><SMALL>" + price;
+                String textToPrint = "<IMAGE>http://i44.photobucket.com/albums/f41/MidstateMusic/midstate_header_200x200_zpsv8bolg7k.png<BR><BIG>" + tagID + "<BR>" + name + "<BR>" + phone + "<BR>" + district + "<BR>" + building + "<BR>" + teacher + "<BR>" + instrument + "<BR>" + brand + "<BR>" + serial + "<BR>" + dueDate + "<BR>" + price;
                 Intent intent = new Intent("pe.diegoveloper.printing");
                 intent.setType("text/plain");
                 intent.putExtra(android.content.Intent.EXTRA_TEXT,textToPrint);
