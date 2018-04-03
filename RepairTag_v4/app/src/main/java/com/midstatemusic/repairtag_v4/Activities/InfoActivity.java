@@ -25,6 +25,9 @@ import com.midstatemusic.repairtag_v4.R;
 
 public class InfoActivity extends AppCompatActivity {
 
+    private View focusedViewOnActionDown;
+    private boolean touchWasInsideFocusedView;
+
     BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
 
@@ -78,12 +81,10 @@ public class InfoActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if (prevMenuItem != null) {
                     prevMenuItem.setChecked(false);
-                }
-                else
-                {
+                } else {
                     bottomNavigationView.getMenu().getItem(0).setChecked(false);
                 }
-                Log.d("page", "onPageSelected: "+position);
+                Log.d("page", "onPageSelected: " + position);
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
                 prevMenuItem = bottomNavigationView.getMenu().getItem(position);
                 hideKeyboard(viewPager);
@@ -112,24 +113,55 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         assert inputMethodManager != null;
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    //https://stackoverflow.com/questions/4165414/how-to-hide-soft-keyboard-on-android-after-clicking-outside-edittext
     @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if (v instanceof EditText) {
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-                    v.clearFocus();
-                    hideKeyboard(v);
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                focusedViewOnActionDown = getCurrentFocus();
+                if (focusedViewOnActionDown != null) {
+                    final Rect rect = new Rect();
+                    final int[] coordinates = new int[2];
+
+                    focusedViewOnActionDown.getLocationOnScreen(coordinates);
+
+                    rect.set(coordinates[0], coordinates[1],
+                            coordinates[0] + focusedViewOnActionDown.getWidth(),
+                            coordinates[1] + focusedViewOnActionDown.getHeight());
+
+                    final int x = (int) ev.getX();
+                    final int y = (int) ev.getY();
+
+                    touchWasInsideFocusedView = rect.contains(x, y);
                 }
-            }
+                break;
+
+            case MotionEvent.ACTION_UP:
+                if (focusedViewOnActionDown != null) {
+                    final boolean consumed = super.dispatchTouchEvent(ev);
+
+                    final View currentFocus = getCurrentFocus();
+
+                    assert currentFocus != null;
+                    if (currentFocus.equals(focusedViewOnActionDown)) {
+                        if (touchWasInsideFocusedView) {
+                            return consumed;
+                        }
+                    } else if (currentFocus instanceof EditText) {
+                        return consumed;
+                    }
+                     hideKeyboard(viewPager);
+                    focusedViewOnActionDown.clearFocus();
+
+                    return consumed;
+                }
+                break;
         }
-        return super.dispatchTouchEvent(event);
+        return super.dispatchTouchEvent(ev);
     }
 }
