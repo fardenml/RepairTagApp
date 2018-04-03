@@ -4,10 +4,7 @@
     android:id="@+id/relativeLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.midstatemusic.repairtag_v4.Fragments.CustomerFragment"
-    android:clickable="true"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
+    tools:context="com.midstatemusic.repairtag_v4.Fragments.CustomerFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,9 +15,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="60dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:gravity="center"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:id="@+id/editDescription"

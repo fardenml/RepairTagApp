@@ -1,5 +1,6 @@
 package com.midstatemusic.repairtag_v4.Activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.R;
 
 import java.sql.*;
+import java.util.Objects;
 
 public class PinActivity extends AppCompatActivity {
 
@@ -39,10 +41,7 @@ public class PinActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.buttonPinLogin:
 
-                // Hides keyboard when button is pressed
-                InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
+                hideKeyboard(v);
 
                 Info.employeeID = pin.getText().toString();
 
@@ -91,5 +90,11 @@ public class PinActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        assert inputMethodManager != null;
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
