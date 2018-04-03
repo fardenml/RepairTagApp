@@ -1,21 +1,16 @@
 package com.midstatemusic.repairtag_v4.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
-import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.R;
-
-import java.sql.ResultSet;
 
 public class SettingsActivity extends AppCompatActivity {
 

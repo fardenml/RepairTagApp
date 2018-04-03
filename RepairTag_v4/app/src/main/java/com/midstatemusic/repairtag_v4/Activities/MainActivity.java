@@ -15,7 +15,6 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.midstatemusic.repairtag_v4.Helpers.Info;

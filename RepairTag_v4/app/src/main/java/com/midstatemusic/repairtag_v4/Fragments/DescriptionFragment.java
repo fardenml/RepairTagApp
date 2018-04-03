@@ -6,29 +6,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.midstatemusic.repairtag_v4.Activities.MainActivity;
 import com.midstatemusic.repairtag_v4.Activities.PrintActivity;
 import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
 import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.R;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
 import java.util.Random;
 
 public class DescriptionFragment extends Fragment implements View.OnClickListener{

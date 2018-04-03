@@ -1,10 +1,9 @@
 package com.midstatemusic.repairtag_v4.Activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,8 +15,7 @@ import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
 import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.R;
 
-import java.sql.*;
-import java.util.Objects;
+import java.sql.ResultSet;
 
 public class PinActivity extends AppCompatActivity {
 

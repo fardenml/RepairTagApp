@@ -1,19 +1,15 @@
 package com.midstatemusic.repairtag_v4.Activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.midstatemusic.repairtag_v4.R;
 import com.midstatemusic.repairtag_v4.Helpers.Info;
-
-import java.lang.reflect.Field;
+import com.midstatemusic.repairtag_v4.R;
 
 
 public class PrintActivity extends AppCompatActivity {

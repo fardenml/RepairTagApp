@@ -3,7 +3,9 @@ package com.midstatemusic.repairtag_v4.Helpers;
 import android.os.StrictMode;
 import android.util.Log;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 public class DatabaseConnections {
     public static Connection con;
