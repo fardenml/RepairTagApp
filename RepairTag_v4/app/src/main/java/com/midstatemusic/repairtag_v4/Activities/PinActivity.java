@@ -101,6 +101,7 @@ public class PinActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             nDialog.dismiss();
                             if (Info.employeeID.equals("2018")) {
+                                Info.offline = true;
                                 Info.employeeFirstName = "Offline";
                                 Info.employeeLastName = "Admin";
                                 error.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null));

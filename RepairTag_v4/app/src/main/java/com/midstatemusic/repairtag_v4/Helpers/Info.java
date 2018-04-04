@@ -16,6 +16,7 @@ public class Info {
 
     public static Boolean editing = false;
     public static Boolean printing = false;
+    public static Boolean offline = false;
 
     public static String employeeFirstName, employeeLastName;
 

@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        navigationView = findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +61,12 @@ public class MainActivity extends AppCompatActivity
         main.setText(Html.fromHtml(formattedTextMain));
 
         if (!Info.employeeID.equals(Info.adminID)) {
-            hideItem();
+            nav_Menu.findItem(R.id.nav_settings).setVisible(false);
+        }
+
+        if (Info.offline) {
+            nav_Menu.findItem(R.id.nav_settings).setVisible(true);
+            Info.offline = false;
         }
     }
 
@@ -112,11 +120,5 @@ public class MainActivity extends AppCompatActivity
             }
         }, 1000);
         return true;
-    }
-
-    private void hideItem() {
-        navigationView = findViewById(R.id.nav_view);
-        Menu nav_Menu = navigationView.getMenu();
-        nav_Menu.findItem(R.id.nav_settings).setVisible(false);
     }
 }

@@ -23,7 +23,7 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Description"
-            android:inputType="textMultiLine"
+            android:inputType="textCapSentences|textMultiLine"
             android:maxLength="255"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
