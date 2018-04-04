@@ -3,6 +3,8 @@ package com.midstatemusic.repairtag_v4.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import android.database.sqlite.*;
 
 import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
 import com.midstatemusic.repairtag_v4.Helpers.Info;
@@ -61,10 +65,13 @@ public class PinActivity extends AppCompatActivity {
                     Log.d("ID COUNT", String.valueOf(count));
 
                     if (count > 0) {
+                        pin.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
+
                         String query = "select first_name, last_name from employees where id = " + Info.employeeID;
 
                         ResultSet rs = DatabaseConnections.stmt.executeQuery(query);
                         rs.next();
+
 
                         Info.employeeFirstName = rs.getString("first_name");
                         Info.employeeLastName = rs.getString("last_name");
@@ -72,10 +79,12 @@ public class PinActivity extends AppCompatActivity {
                         startActivity(new Intent(this, MainActivity.class));
                     } else{
                         error.setText("Pin Incorrect!");
+                        pin.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
                     }
 
                     DatabaseConnections.con.close();
                 } catch (Exception e) {
+                    pin.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorOrange, null));
                     Log.d("SQL ERROR", e.toString());
                     if (Info.employeeID.equals("2018")) {
                         Info.employeeFirstName = "Offline";
@@ -95,4 +104,6 @@ public class PinActivity extends AppCompatActivity {
         assert inputMethodManager != null;
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+
 }

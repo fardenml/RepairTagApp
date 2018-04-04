@@ -67,11 +67,11 @@ public class SettingsActivity extends AppCompatActivity {
                     DatabaseConnections.con.close();
                 } catch(Exception e){
                     Log.d("SQL ERROR", e.toString());
-                    editUser.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
-                    editPassword.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
-                    editIP.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
-                    editPort.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
-                    editDatabase.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorAccent, null));
+                    editUser.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
+                    editPassword.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
+                    editIP.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
+                    editPort.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
+                    editDatabase.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
                 }
 
                 break;
