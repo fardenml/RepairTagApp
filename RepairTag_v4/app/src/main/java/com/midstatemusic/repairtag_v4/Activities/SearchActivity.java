@@ -11,11 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
+import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.R;
 
-import java.sql.*;
+import java.sql.ResultSet;
 
 public class SearchActivity extends AppCompatActivity {
 

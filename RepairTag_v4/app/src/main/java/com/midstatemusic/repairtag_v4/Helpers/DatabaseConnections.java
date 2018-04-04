@@ -13,10 +13,9 @@ public class DatabaseConnections {
 
     private static String user = "music";
     private static String password = "clarkson2018";
-    private static String ip = "192.168.1.6";
+    private static String ip = "192.168.1.5";
     private static String port = "3306";
     private static String database = "Midstate";
-
 
     public static Boolean dbConnect(){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -72,8 +71,4 @@ public class DatabaseConnections {
     public static String getDatabase(){
         return database;
     }
-
-
-
-
 }

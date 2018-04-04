@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.ContactsContract;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,8 +13,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import android.database.sqlite.*;
 
 import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
 import com.midstatemusic.repairtag_v4.Helpers.Info;
@@ -49,7 +46,7 @@ public class PinActivity extends AppCompatActivity {
                 hideKeyboard(v);
 
                 nDialog = new ProgressDialog(this);
-                nDialog.setMessage("Loading, Please Wait...");
+                nDialog.setMessage("Please Wait...");
                 nDialog.setTitle("Logging In");
                 nDialog.setIndeterminate(false);
                 nDialog.setCancelable(true);
@@ -85,10 +82,6 @@ public class PinActivity extends AppCompatActivity {
 
                                 Info.employeeFirstName = rs.getString("first_name");
                                 Info.employeeLastName = rs.getString("last_name");
-
-                                nDialog.dismiss();
-                                error.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorGreen, null));
-                                error.setText("Success!");
 
                                 startActivity(new Intent(PinActivity.this, MainActivity.class));
                             } else{
