@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity
 
         if (Info.offline) {
             nav_Menu.findItem(R.id.nav_settings).setVisible(true);
-            Info.offline = false;
         }
     }
 
@@ -107,6 +106,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_logout:
                 startActivity(new Intent(MainActivity.this, PinActivity.class));
+                Info.offline = false;
                 break;
             default:
                 break;
