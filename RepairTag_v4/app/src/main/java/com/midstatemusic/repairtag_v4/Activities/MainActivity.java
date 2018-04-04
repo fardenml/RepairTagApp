@@ -104,19 +104,17 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
             }
-        }, 50);
+        }, 1000);
         return true;
     }
 
-    private void hideItem()
-    {
+    private void hideItem() {
         navigationView = findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_settings).setVisible(false);
