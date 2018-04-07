@@ -11,11 +11,11 @@ public class DatabaseConnections {
     public static Connection con;
     public static Statement stmt;
 
-    private static String user = "music";
-    private static String password = "clarkson2018";
-    private static String ip = "192.168.1.5";
+    private static String user = "midstatedb";
+    private static String password = "Midstate2003!";
+    private static String ip = "midstatedb.c50i3meqerif.us-east-2.rds.amazonaws.com";
     private static String port = "3306";
-    private static String database = "Midstate";
+    private static String database = "midstate";
 
     public static Boolean dbConnect(){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
