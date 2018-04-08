@@ -67,6 +67,9 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
             status.setSelection(spinnerPosition);
         }
 
+        Info.requiredField(description);
+        Info.requiredField(price);
+
         return view;
     }
 
@@ -74,10 +77,7 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonSubmit:
-                if (description.getText().toString().isEmpty()) {
-                    description.setError(description.getHint() + " is empty");
-                }
-                else {
+                if (Info.checkFields(CustomerFragment.first, CustomerFragment.last, CustomerFragment.address, CustomerFragment.city, CustomerFragment.state, CustomerFragment.zip, CustomerFragment.phone, SchoolFragment.schoolDistrict, SchoolFragment.schoolBuilding, InstrumentFragment.instrument, InstrumentFragment.brand, description, price)){
                     new AlertDialog.Builder(getActivity())
                             .setTitle("Submit Repair Tag")
                             .setMessage("Are you sure you want to submit this repair tag?")

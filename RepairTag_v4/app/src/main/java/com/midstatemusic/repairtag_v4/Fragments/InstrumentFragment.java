@@ -38,6 +38,9 @@ public class InstrumentFragment extends Fragment {
             mouthPiece.setChecked(Info.mouthPiece);
         }
 
+        Info.requiredField(instrument);
+        Info.requiredField(brand);
+
         return view;
     }
 }
