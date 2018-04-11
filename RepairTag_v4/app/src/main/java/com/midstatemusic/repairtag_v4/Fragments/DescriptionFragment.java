@@ -90,7 +90,7 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
                                         Info.city = CustomerFragment.city.getText().toString();
                                         Info.state = CustomerFragment.state.getText().toString();
                                         Info.zip = CustomerFragment.zip.getText().toString();
-                                        Info.phone = PhoneNumberUtils.formatNumber(CustomerFragment.phone.getText().toString());
+                                        Info.phone = Info.formatPhoneNumber(CustomerFragment.phone.getText().toString());
                                         Info.email = CustomerFragment.email.getText().toString();
 
                                         Info.schoolDistrict = SchoolFragment.schoolDistrict.getText().toString();

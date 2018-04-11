@@ -41,7 +41,7 @@ public class CustomerFragment extends Fragment {
             city.setText(Info.city);
             state.setText(Info.state);
             zip.setText(Info.zip);
-            phone.setText(PhoneNumberUtils.normalizeNumber(Info.phone));
+            phone.setText(Info.normalizePhoneNumber(Info.phone));
             email.setText(Info.email);
         }
 

@@ -67,4 +67,23 @@ public class Info {
             return true;
         }
     }
+
+    public static String formatPhoneNumber(String number) {
+        // Format: (###) ###-####
+        String areaCode = number.substring(0,3);
+        String firstPart = number.substring(3,6);
+        String lastPart = number.substring(6,10);
+
+        String formatted = "(" + areaCode + ") " + firstPart + "-" + lastPart;
+        return formatted;
+    }
+
+    public static String normalizePhoneNumber(String number) {
+        String areaCode = number.substring(1,4);
+        String firstPart = number.substring(6,9);
+        String lastPart = number.substring(10,14);
+
+        return areaCode + firstPart + lastPart;
+    }
+
 }
