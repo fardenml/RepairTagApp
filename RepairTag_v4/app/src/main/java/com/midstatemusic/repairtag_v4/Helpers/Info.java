@@ -27,7 +27,7 @@ public class Info {
     public static String missingFields = " ";
 
     public static Boolean checkFields(EditText first, EditText last, EditText address, EditText city, EditText state, EditText zip, EditText phone, EditText schoolDistrict, EditText schoolBuilding, EditText instrument, EditText brand, EditText serial, EditText description, EditText price){
-        if (first.getText().toString().isEmpty() || last.getText().toString().isEmpty() || address.getText().toString().isEmpty() || city.getText().toString().isEmpty() || state.getText().toString().isEmpty() || zip.getText().toString().isEmpty() || phone.getText().toString().isEmpty() || schoolDistrict.getText().toString().isEmpty() || schoolBuilding.getText().toString().isEmpty() || instrument.getText().toString().isEmpty() || brand.getText().toString().isEmpty() || serial.getText().toString().isEmpty() || description.getText().toString().isEmpty() || price.getText().toString().isEmpty()) {
+        if (first.getText().toString().isEmpty() || last.getText().toString().isEmpty() || address.getText().toString().isEmpty() || city.getText().toString().isEmpty() || state.getText().toString().isEmpty() || zip.getText().toString().isEmpty() || phone.getText().toString().isEmpty() || phone.getText().toString().length() < 10 || schoolDistrict.getText().toString().isEmpty() || schoolBuilding.getText().toString().isEmpty() || instrument.getText().toString().isEmpty() || brand.getText().toString().isEmpty() || serial.getText().toString().isEmpty() || description.getText().toString().isEmpty() || price.getText().toString().isEmpty()) {
             missingFields = " ";
             if (first.getText().toString().isEmpty())
                 missingFields += "First Name, ";
@@ -43,6 +43,8 @@ public class Info {
                 missingFields += "Zip, ";
             if (phone.getText().toString().isEmpty())
                 missingFields += "Phone Number, ";
+			else if (phone.getText().toString().length() < 10)
+				missingFields += "Phone Number Needs an Area Code, ";
             if (schoolDistrict.getText().toString().isEmpty())
                 missingFields += "School District, ";
             if (schoolBuilding.getText().toString().isEmpty())
