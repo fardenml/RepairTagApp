@@ -67,9 +67,6 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
             status.setSelection(spinnerPosition);
         }
 
-        Info.requiredField(description);
-        Info.requiredField(price);
-
         return view;
     }
 
@@ -77,7 +74,7 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonSubmit:
-                if (Info.checkFields(CustomerFragment.first, CustomerFragment.last, CustomerFragment.address, CustomerFragment.city, CustomerFragment.state, CustomerFragment.zip, CustomerFragment.phone, SchoolFragment.schoolDistrict, SchoolFragment.schoolBuilding, InstrumentFragment.instrument, InstrumentFragment.brand, description, price)){
+                if (Info.checkFields(CustomerFragment.first, CustomerFragment.last, CustomerFragment.address, CustomerFragment.city, CustomerFragment.state, CustomerFragment.zip, CustomerFragment.phone, SchoolFragment.schoolDistrict, SchoolFragment.schoolBuilding, InstrumentFragment.instrument, InstrumentFragment.brand, InstrumentFragment.serialNumber, description, price)){
                     new AlertDialog.Builder(getActivity())
                             .setTitle("Submit Repair Tag")
                             .setMessage("Are you sure you want to submit this repair tag?")
@@ -139,6 +136,17 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                } else {
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("Submit Repair Tag")
+                            .setMessage("The following fields are required:" + Info.missingFields)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
                                 }
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)

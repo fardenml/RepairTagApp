@@ -37,10 +37,6 @@ public class InstrumentFragment extends Fragment {
             serialNumber.setText(Info.serialNumber);
             mouthPiece.setChecked(Info.mouthPiece);
         }
-
-        Info.requiredField(instrument);
-        Info.requiredField(brand);
-
         return view;
     }
 }

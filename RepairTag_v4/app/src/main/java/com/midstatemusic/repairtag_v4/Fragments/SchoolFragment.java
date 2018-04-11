@@ -34,9 +34,6 @@ public class SchoolFragment extends Fragment {
             teacher.setText(Info.teacher);
         }
 
-        Info.requiredField(schoolDistrict);
-        Info.requiredField(schoolBuilding);
-
 
         return view;
     }

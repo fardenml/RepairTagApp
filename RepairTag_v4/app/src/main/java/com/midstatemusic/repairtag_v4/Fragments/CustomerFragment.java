@@ -34,14 +34,6 @@ public class CustomerFragment extends Fragment {
         phone = view.findViewById(R.id.editPhone);
         email = view.findViewById(R.id.editEmail);
 
-        Info.requiredField(first);
-        Info.requiredField(last);
-        Info.requiredField(address);
-        Info.requiredField(city);
-        Info.requiredField(state);
-        Info.requiredField(zip);
-        Info.requiredField(phone);
-
         if (Info.editing) {
             first.setText(Info.firstName);
             last.setText(Info.lastName);
