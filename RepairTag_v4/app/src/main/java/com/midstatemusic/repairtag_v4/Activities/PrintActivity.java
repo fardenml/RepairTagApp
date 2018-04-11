@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,9 +16,9 @@ import com.midstatemusic.repairtag_v4.R;
 public class PrintActivity extends AppCompatActivity {
 
     public Button print, home;
-    public TextView printStatus, showID, showName, showInstrument, showBrand, showSerial, showDueDate, showPrice;
+    public TextView printStatus, showInfo;
 
-    String tagID, name, phone, district, building, teacher, instrument, brand, serial, dueDate, price;
+    String tagID, name, address, phone, district, building, teacher, instrument, brand, serial, dueDate, price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,42 +29,25 @@ public class PrintActivity extends AppCompatActivity {
         home = findViewById(R.id.buttonHome);
 
         printStatus = findViewById(R.id.textPrintStatus);
-        showID = findViewById(R.id.textShowID);
-        showName = findViewById(R.id.textShowName);
-        showInstrument = findViewById(R.id.textShowInstrument);
-        showBrand = findViewById(R.id.textShowBrand);
-        showSerial = findViewById(R.id.textShowSerial);
-        showDueDate = findViewById(R.id.textShowDueDate);
-        showPrice = findViewById(R.id.textShowPrice);
+        showInfo = findViewById(R.id.textShowInfo);
 
         tagID = "Tag ID: " + Info.id;
-        showID.setText(tagID);
-
         name = "Name: " + Info.firstName + " " + Info.lastName;
-        showName.setText(name);
-
+        address = "Address: " + Info.address + ", " + Info.city + ", " + Info.state + " " + Info.zip;
         phone = "Phone: " + Info.phone;
-
         district = "School District: " + Info.schoolDistrict;
-
         building = "School Building: " + Info.schoolBuilding;
-
         teacher = "Teacher: " + Info.teacher;
-
         instrument = "Instrument: " + Info.instrument;
-        showInstrument.setText(instrument);
-
         brand = "Brand: " + Info.brand;
-        showBrand.setText(brand);
-
         serial = "Serial Number: " + Info.serialNumber;
-        showSerial.setText(serial);
-
         dueDate = "Due Date: " + Info.dueDate;
-        showDueDate.setText(dueDate);
-
         price = "Price: $" + Info.price;
-        showPrice.setText(price);
+
+        String formattedTextInfo = "<body><h6>" + tagID + "<br>" + name + "<br>" + address + "<br>" + phone + "<br>" + district + "<br>" + building + "<br>" + teacher + "<br>" + instrument + "<br>" +  brand +
+                "<br>" + serial + "<br>" + dueDate + "<br>" + price + "</h6></body>";
+
+        showInfo.setText(Html.fromHtml(formattedTextInfo));
     }
 
     public void onClick(View v) {
