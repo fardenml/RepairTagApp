@@ -7,31 +7,19 @@
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
+    android:paddingBottom="10dp"
     tools:context="com.midstatemusic.repairtag_v4.Activities.PrintActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/textShowInfo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textShowInfo">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textPrintStatus"
@@ -52,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_print_small"
             android:onClick="onClick"
             android:text=" Print"
@@ -66,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_home_small"
             android:onClick="onClick"
             android:text=" Home"
@@ -74,5 +62,16 @@
             app:layout_constraintTop_toBottomOf="@+id/textPrintStatus" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/infoList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:listSelector="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
 </android.support.constraint.ConstraintLayout>

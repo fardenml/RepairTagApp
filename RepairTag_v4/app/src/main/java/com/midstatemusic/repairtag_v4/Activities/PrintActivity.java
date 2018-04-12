@@ -6,7 +6,9 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.midstatemusic.repairtag_v4.Helpers.Info;
@@ -16,9 +18,11 @@ import com.midstatemusic.repairtag_v4.R;
 public class PrintActivity extends AppCompatActivity {
 
     public Button print, home;
-    public TextView printStatus, showInfo;
+    public TextView printStatus;
 
     String tagID, name, address, phone, email, district, building, teacher, instrument, brand, serial, formatMouthpiece, description, dueDate, price, formatMPC, status;
+
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +33,16 @@ public class PrintActivity extends AppCompatActivity {
         home = findViewById(R.id.buttonHome);
 
         printStatus = findViewById(R.id.textPrintStatus);
-        showInfo = findViewById(R.id.textShowInfo);
 
         tagID = "Tag ID: " + Info.id;
 
-        // Required fields
         name = "Name: " + Info.firstName + " " + Info.lastName;
         address = "Address: " + Info.address + ", " + Info.city + ", " + Info.state + " " + Info.zip;
         phone = "Phone: " + Info.phone;
+        email = "Email: " + Info.email;
         district = "School District: " + Info.schoolDistrict;
         building = "School Building: " + Info.schoolBuilding;
+        teacher = "Teacher: " + Info.teacher;
         instrument = "Instrument: " + Info.instrument;
         brand = "Brand: " + Info.brand;
         serial = "Serial Number: " + Info.serialNumber;
@@ -59,15 +63,14 @@ public class PrintActivity extends AppCompatActivity {
             formatMPC = "MP Coverage: No";
         }
 
-        // Non-required fields
-        email = "Email: " + Info.email;
-        teacher = "Teacher: " + Info.teacher;
+        listView = findViewById(R.id.infoList);
+        String[] values = new String[] { name, address, phone, email, district, building, teacher, instrument, brand, serial,
+                formatMouthpiece, description, status, dueDate, formatMPC, price };
 
-        String formattedTextInfo = "<body><p>" + tagID + "<br>" + name + "<br>" + address + "<br>" + phone + "<br>" + email + "<br>" + district +
-                "<br>" + building + "<br>" + teacher + "<br>" + instrument + "<br>" + brand + "<br>" + serial + "<br>" + formatMouthpiece +
-                "<br>" + description + "<br>" + status + "<br>" + dueDate + "<br>" + price + "<br>" + formatMPC + "</p></body>";
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
-        showInfo.setText(Html.fromHtml(formattedTextInfo));
+        listView.setAdapter(adapter);
     }
 
     public void onClick(View v) {
