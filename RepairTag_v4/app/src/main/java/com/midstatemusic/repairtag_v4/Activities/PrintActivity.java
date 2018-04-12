@@ -18,7 +18,7 @@ public class PrintActivity extends AppCompatActivity {
     public Button print, home;
     public TextView printStatus, showInfo;
 
-    String tagID, name, address, phone, district, building, teacher, instrument, brand, serial, dueDate, price;
+    String tagID, name, address, phone, email, district, building, teacher, instrument, brand, serial, formatMouthpiece, description, dueDate, price, formatMPC, status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,20 +32,40 @@ public class PrintActivity extends AppCompatActivity {
         showInfo = findViewById(R.id.textShowInfo);
 
         tagID = "Tag ID: " + Info.id;
+
+        // Required fields
         name = "Name: " + Info.firstName + " " + Info.lastName;
         address = "Address: " + Info.address + ", " + Info.city + ", " + Info.state + " " + Info.zip;
         phone = "Phone: " + Info.phone;
         district = "School District: " + Info.schoolDistrict;
         building = "School Building: " + Info.schoolBuilding;
-        teacher = "Teacher: " + Info.teacher;
         instrument = "Instrument: " + Info.instrument;
         brand = "Brand: " + Info.brand;
         serial = "Serial Number: " + Info.serialNumber;
-        dueDate = "Due Date: " + Info.dueDate;
+        description = "Description: " + Info.description;
         price = "Price: $" + Info.price;
+        status = "Status: " + Info.status;
+        dueDate = "Due Date: " + Info.dueDate;
 
-        String formattedTextInfo = "<body><h6>" + tagID + "<br>" + name + "<br>" + address + "<br>" + phone + "<br>" + district + "<br>" + building + "<br>" + teacher + "<br>" + instrument + "<br>" +  brand +
-                "<br>" + serial + "<br>" + dueDate + "<br>" + price + "</h6></body>";
+        if (Info.mouthPiece) {
+            formatMouthpiece = "Mouthpiece: Yes";
+        } else {
+            formatMouthpiece = "Mouthpiece: No";
+        }
+
+        if (Info.mpCoverage) {
+            formatMPC = "MP Coverage: Yes";
+        } else {
+            formatMPC = "MP Coverage: No";
+        }
+
+        // Non-required fields
+        email = "Email: " + Info.email;
+        teacher = "Teacher: " + Info.teacher;
+
+        String formattedTextInfo = "<body><p>" + tagID + "<br>" + name + "<br>" + address + "<br>" + phone + "<br>" + email + "<br>" + district +
+                "<br>" + building + "<br>" + teacher + "<br>" + instrument + "<br>" + brand + "<br>" + serial + "<br>" + formatMouthpiece +
+                "<br>" + description + "<br>" + status + "<br>" + dueDate + "<br>" + price + "<br>" + formatMPC + "</p></body>";
 
         showInfo.setText(Html.fromHtml(formattedTextInfo));
     }

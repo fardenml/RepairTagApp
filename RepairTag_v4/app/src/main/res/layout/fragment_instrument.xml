@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="Serial Number (Enter 'None' if Unavailable)"
+            android:hint="Serial Number (Enter 'N/A' if Unavailable)"
             android:inputType="textCapWords"
             android:maxLength="255"
             android:drawableRight="@drawable/ic_error_red"
