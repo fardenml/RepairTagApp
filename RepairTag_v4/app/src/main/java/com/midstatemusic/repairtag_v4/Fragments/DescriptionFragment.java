@@ -23,6 +23,7 @@ import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
 import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.R;
 
+import java.sql.ResultSet;
 import java.util.Random;
 
 public class DescriptionFragment extends Fragment implements View.OnClickListener{
@@ -118,9 +119,15 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
                                             //Random rand = new Random();
                                             //int id = rand.nextInt(5000) + 2;
                                             //Info.id = String.valueOf(id);
-                                            String value = Info.type + "\', \"" + Info.firstName + "\", \"" + Info.lastName + "\", \"" + Info.address + "\", \"" + Info.city + "\", \"" + Info.state + "\", " + Info.zip + ", \"" + Info.phone + "\", \"" + Info.email + "\", \"" + Info.schoolDistrict + "\", \"" + Info.schoolBuilding + "\", \"" + Info.teacher + "\", \"" + Info.instrument + "\", \"" + Info.brand + "\", \"" + Info.serialNumber + "\", " + Info.mouthPiece + ", \"" + Info.description + "\", \"" + Info.dueDate + "\", " + Info.price + ", " + Info.mpCoverage + ", \"" + Info.status + "\", \"" + Info.sentDate + "\", \"" + Info.receiveDate + "\", " + Info.employeeID;
-                                            DatabaseConnections.stmt.executeUpdate("insert into records values (" + value + ")");
+                                            String columns = "(type, first_name, last_name, address, city, state, zip, phone, email, school_district, school_building, teacher, instrument, brand, serial_number, mouth_piece, description, due_date, price, mp_coverage, status, date_sent, date_received, employee_id)";
+                                            String value = "\"" + Info.type + "\", \"" + Info.firstName + "\", \"" + Info.lastName + "\", \"" + Info.address + "\", \"" + Info.city + "\", \"" + Info.state + "\", \"" + Info.zip + "\", \"" + Info.phone + "\", \"" + Info.email + "\", \"" + Info.schoolDistrict + "\", \"" + Info.schoolBuilding + "\", \"" + Info.teacher + "\", \"" + Info.instrument + "\", \"" + Info.brand + "\", \"" + Info.serialNumber + "\", " + Info.mouthPiece + ", \"" + Info.description + "\", \"" + Info.dueDate + "\", \"" + Info.price + "\", " + Info.mpCoverage + ", \"" + Info.status + "\", \"" + Info.sentDate + "\", \"" + Info.receiveDate + "\", \"" + Info.employeeID + "\"";
+                                            DatabaseConnections.stmt.executeUpdate("insert into records " + columns + " values (" + value + ")");
                                         }
+                                        String query = "SELECT id FROM records ORDER BY id DESC LIMIT 1";
+                                        ResultSet rs = DatabaseConnections.stmt.executeQuery(query);
+
+                                        rs.next();
+                                        Info.id = rs.getString("id");
 
                                         DatabaseConnections.con.close();
 
