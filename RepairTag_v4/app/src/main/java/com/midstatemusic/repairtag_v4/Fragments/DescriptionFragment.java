@@ -115,10 +115,10 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
                                             String command = "update records set " + value + " where id = \"" + Info.id + "\"";
                                             DatabaseConnections.stmt.executeUpdate(command);
                                         } else {
-                                            Random rand = new Random();
-                                            int id = rand.nextInt(5000) + 2;
-                                            Info.id = String.valueOf(id);
-                                            String value = id + ", \'" + Info.type + "\', \"" + Info.firstName + "\", \"" + Info.lastName + "\", \"" + Info.address + "\", \"" + Info.city + "\", \"" + Info.state + "\", " + Info.zip + ", \"" + Info.phone + "\", \"" + Info.email + "\", \"" + Info.schoolDistrict + "\", \"" + Info.schoolBuilding + "\", \"" + Info.teacher + "\", \"" + Info.instrument + "\", \"" + Info.brand + "\", \"" + Info.serialNumber + "\", " + Info.mouthPiece + ", \"" + Info.description + "\", \"" + Info.dueDate + "\", " + Info.price + ", " + Info.mpCoverage + ", \"" + Info.status + "\", \"" + Info.sentDate + "\", \"" + Info.receiveDate + "\", " + Info.employeeID;
+                                            //Random rand = new Random();
+                                            //int id = rand.nextInt(5000) + 2;
+                                            //Info.id = String.valueOf(id);
+                                            String value = Info.type + "\', \"" + Info.firstName + "\", \"" + Info.lastName + "\", \"" + Info.address + "\", \"" + Info.city + "\", \"" + Info.state + "\", " + Info.zip + ", \"" + Info.phone + "\", \"" + Info.email + "\", \"" + Info.schoolDistrict + "\", \"" + Info.schoolBuilding + "\", \"" + Info.teacher + "\", \"" + Info.instrument + "\", \"" + Info.brand + "\", \"" + Info.serialNumber + "\", " + Info.mouthPiece + ", \"" + Info.description + "\", \"" + Info.dueDate + "\", " + Info.price + ", " + Info.mpCoverage + ", \"" + Info.status + "\", \"" + Info.sentDate + "\", \"" + Info.receiveDate + "\", " + Info.employeeID;
                                             DatabaseConnections.stmt.executeUpdate("insert into records values (" + value + ")");
                                         }
 
