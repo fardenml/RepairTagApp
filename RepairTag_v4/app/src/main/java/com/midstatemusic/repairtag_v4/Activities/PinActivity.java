@@ -60,12 +60,13 @@ public class PinActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            String adminQuery = "select id from employees where first_name = \"Admin\"";
+                            //String adminQuery = "select id from employees where first_name = \"Admin\"";
 
-                            ResultSet rsAdmin = DatabaseConnections.stmt.executeQuery(adminQuery);
-                            rsAdmin.next();
+                            //ResultSet rsAdmin = DatabaseConnections.stmt.executeQuery(adminQuery);
+                            //rsAdmin.next();
 
-                            Info.adminID = rsAdmin.getString("id");
+                            //Info.adminID = rsAdmin.getString("id");
+                            Info.adminID = "2018";
 
                             String counter = "select count(*) from employees where id = " + Info.employeeID + " AND active = " + 1;
 
