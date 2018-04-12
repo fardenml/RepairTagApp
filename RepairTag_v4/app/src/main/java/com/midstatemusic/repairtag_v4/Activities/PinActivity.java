@@ -67,7 +67,7 @@ public class PinActivity extends AppCompatActivity {
 
                             Info.adminID = rsAdmin.getString("id");
 
-                            String counter = "select count(*) from employees where id = " + Info.employeeID;
+                            String counter = "select count(*) from employees where id = " + Info.employeeID + " AND active = " + 1;
 
                             ResultSet rsCount = DatabaseConnections.stmt.executeQuery(counter);
                             rsCount.next();
@@ -75,7 +75,7 @@ public class PinActivity extends AppCompatActivity {
                             Log.d("ID COUNT", String.valueOf(count));
 
                             if (count > 0) {
-                                String query = "select first_name, last_name from employees where id = " + Info.employeeID;
+                                String query = "select first_name, last_name from employees where id = " + Info.employeeID + " AND active = " + 1;
 
                                 ResultSet rs = DatabaseConnections.stmt.executeQuery(query);
                                 rs.next();
