@@ -66,7 +66,6 @@ public class PinActivity extends AppCompatActivity {
                             //rsAdmin.next();
 
                             //Info.adminID = rsAdmin.getString("id");
-                            Info.adminID = "2018";
 
                             String counter = "select count(*) from employees where id = " + Info.employeeID + " AND active = " + 1;
 
@@ -83,6 +82,11 @@ public class PinActivity extends AppCompatActivity {
 
                                 Info.employeeFirstName = rs.getString("first_name");
                                 Info.employeeLastName = rs.getString("last_name");
+
+                                startActivity(new Intent(PinActivity.this, MainActivity.class));
+                            } else if (Info.employeeID.equals(Info.adminID)){
+                                Info.employeeFirstName = "Admin";
+                                Info.employeeLastName = "User";
 
                                 startActivity(new Intent(PinActivity.this, MainActivity.class));
                             } else{

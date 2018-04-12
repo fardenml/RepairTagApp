@@ -22,7 +22,7 @@ public class Info {
 
     public static String employeeFirstName, employeeLastName;
 
-    public static String adminID;
+    public static final String adminID = "2018";
 
     public static String missingFields = " ";
 
