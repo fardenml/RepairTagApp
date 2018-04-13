@@ -7,69 +7,90 @@
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:paddingBottom="10dp"
     tools:context="com.midstatemusic.repairtag_v4.Activities.PrintActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="89dp">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoList">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textPrintStatus"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ready to Print!"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_conversion_absoluteHeight="85dp"
+            tools:layout_conversion_absoluteWidth="271dp">
 
-        <Button
-            android:id="@+id/buttonPrint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:drawableStart="@drawable/ic_print_small"
-            android:onClick="onClick"
-            android:text=" Print"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonHome"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textPrintStatus" />
+            <TextView
+                android:id="@+id/textPrintStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ready to Print!"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="25dp"
+                tools:layout_conversion_absoluteWidth="117dp"
+                tools:layout_editor_absoluteX="78dp"
+                tools:layout_editor_absoluteY="0dp" />
 
-        <Button
-            android:id="@+id/buttonHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="8dp"
-            android:drawableStart="@drawable/ic_home_small"
-            android:onClick="onClick"
-            android:text=" Home"
+            <Button
+                android:id="@+id/buttonPrint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_print_small"
+                android:onClick="onClick"
+                android:text=" Print"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/buttonHome"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textPrintStatus"
+                tools:layout_conversion_absoluteHeight="52dp"
+                tools:layout_conversion_absoluteWidth="100dp"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="33dp" />
+
+            <Button
+                android:id="@+id/buttonHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_home_small"
+                android:onClick="onClick"
+                android:text=" Home"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textPrintStatus"
+                tools:layout_conversion_absoluteHeight="52dp"
+                tools:layout_conversion_absoluteWidth="99dp"
+                tools:layout_editor_absoluteX="148dp"
+                tools:layout_editor_absoluteY="33dp" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <ListView
+            android:id="@+id/infoList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:listSelector="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textPrintStatus" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     </android.support.constraint.ConstraintLayout>
-
-    <ListView
-        android:id="@+id/infoList"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:listSelector="@android:color/transparent"
-        android:padding="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
