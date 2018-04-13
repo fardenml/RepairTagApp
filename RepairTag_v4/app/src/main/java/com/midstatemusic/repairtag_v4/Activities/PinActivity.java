@@ -105,8 +105,7 @@ public class PinActivity extends AppCompatActivity {
                                 error.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null));
                                 error.setText("Entering Offline Mode");
                                 startActivity(new Intent(PinActivity.this, MainActivity.class));
-                            }
-                            else {
+                            } else {
                                 error.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorOrange, null));
                                 error.setText("Connection Error! Please Try Again");
                             }
