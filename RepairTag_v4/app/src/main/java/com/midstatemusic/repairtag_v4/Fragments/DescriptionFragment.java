@@ -125,11 +125,14 @@ public class DescriptionFragment extends Fragment implements View.OnClickListene
                                             //String value = "\"" + Info.type + "\", \"" + Info.firstName + "\", \"" + Info.lastName + "\", \"" + Info.address + "\", \"" + Info.city + "\", \"" + Info.state + "\", \"" + Info.zip + "\", \"" + Info.phone + "\", \"" + Info.email + "\", \"" + Info.schoolDistrict + "\", \"" + Info.schoolBuilding + "\", \"" + Info.teacher + "\", \"" + Info.instrument + "\", \"" + Info.brand + "\", \"" + Info.serialNumber + "\", " + Info.mouthPiece + ", \"" + Info.description + "\", \"" + Info.dueDate + "\", \"" + Info.price + "\", " + Info.mpCoverage + ", \"" + Info.status + "\", \""  + Info.employeeID + "\"";
                                             DatabaseConnections.stmt.executeUpdate("insert into records " + columns + " values (" + value + ")");
                                         }
-                                        String query = "SELECT id FROM records ORDER BY id DESC LIMIT 1";
-                                        ResultSet rs = DatabaseConnections.stmt.executeQuery(query);
 
-                                        rs.next();
-                                        Info.id = rs.getString("id");
+                                        if (!Info.editing) {
+                                            String query = "SELECT id FROM records ORDER BY id DESC LIMIT 1";
+                                            ResultSet rs = DatabaseConnections.stmt.executeQuery(query);
+
+                                            rs.next();
+                                            Info.id = rs.getString("id");
+                                        }
 
                                         DatabaseConnections.con.close();
 
