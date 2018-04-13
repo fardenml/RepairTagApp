@@ -68,7 +68,7 @@ public class PrintActivity extends AppCompatActivity {
                 formatMouthpiece, description, status, dueDate, formatMPC, price };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+                android.R.layout.simple_gallery_item, android.R.id.text1, values);
 
         listView.setAdapter(adapter);
     }
