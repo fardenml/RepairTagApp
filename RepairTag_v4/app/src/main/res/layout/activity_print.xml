@@ -64,7 +64,7 @@
     <ListView
         android:id="@+id/infoList"
         android:layout_width="0dp"
-        android:layout_height="623dp"
+        android:layout_height="500dp"
         android:listSelector="@android:color/transparent"
         android:padding="30dp"
         app:layout_constraintEnd_toEndOf="parent"

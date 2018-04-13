@@ -113,7 +113,7 @@ public class PinActivity extends AppCompatActivity {
                             Log.d("SQL ERROR", e.toString());
                         }
                     }
-                }, 2000);
+                }, 1500);
                 break;
 
             default:
