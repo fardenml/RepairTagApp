@@ -15,7 +15,6 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +64,7 @@
     <ListView
         android:id="@+id/infoList"
         android:layout_width="0dp"
-        android:layout_height="471dp"
+        android:layout_height="623dp"
         android:listSelector="@android:color/transparent"
         android:padding="30dp"
         app:layout_constraintEnd_toEndOf="parent"

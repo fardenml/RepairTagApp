@@ -31,11 +31,9 @@ public class PrintActivity extends AppCompatActivity {
 
         print = findViewById(R.id.buttonPrint);
         home = findViewById(R.id.buttonHome);
-
         printStatus = findViewById(R.id.textPrintStatus);
 
         tagID = "Tag ID: " + Info.id;
-
         name = "Name: " + Info.firstName + " " + Info.lastName;
         address = "Address: " + Info.address + ", " + Info.city + ", " + Info.state + " " + Info.zip;
         phone = "Phone: " + Info.phone;
@@ -64,7 +62,7 @@ public class PrintActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.infoList);
-        String[] values = new String[] { name, address, phone, email, district, building, teacher, instrument, brand, serial,
+        String[] values = new String[] { tagID, name, address, phone, email, district, building, teacher, instrument, brand, serial,
                 formatMouthpiece, description, status, dueDate, formatMPC, price };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
