@@ -1,6 +1,10 @@
 package com.midstatemusic.repairtag_v4.Helpers;
 
+import android.util.Log;
 import android.widget.EditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Info {
     public static String id;
@@ -86,6 +90,17 @@ public class Info {
         String lastPart = number.substring(10,14);
 
         return areaCode + firstPart + lastPart;
+    }
+
+    public static String createSentDate() {
+        try {
+            SimpleDateFormat fmt = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+            Date date = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(fmt.format(new Date()));
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        } catch(Exception e) {
+            Log.d("SENT DATE ERROR", e.toString());
+        }
+        return " ";
     }
 
 }
