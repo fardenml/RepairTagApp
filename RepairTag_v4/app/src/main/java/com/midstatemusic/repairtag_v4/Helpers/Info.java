@@ -103,4 +103,15 @@ public class Info {
         return " ";
     }
 
+    public static String mySQlToAndroidTime(Date date){
+        try {
+            SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            date = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(fmt.format(date));
+            return new SimpleDateFormat("dd/MM/y h:mm a").format(date);
+        } catch(Exception e) {
+            Log.d("TIME CONVERSION ERROR", e.toString());
+        }
+        return " ";
+    }
+
 }

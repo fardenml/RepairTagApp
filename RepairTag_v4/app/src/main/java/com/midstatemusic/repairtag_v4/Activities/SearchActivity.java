@@ -133,9 +133,7 @@ public class SearchActivity extends AppCompatActivity {
                             last = rs.getString("last_name");
                             date = rs.getDate("date_received");
 
-                            fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            date = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(fmt.format(date));
-                            fDate = new SimpleDateFormat("MM/dd/yy h:mm a").format(date);
+                            fDate = Info.mySQlToAndroidTime(date);
 
                             buttonRecent1.setText("ID: " + recentID1 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
@@ -146,9 +144,7 @@ public class SearchActivity extends AppCompatActivity {
                             last = rs.getString("last_name");
                             date = rs.getDate("date_received");
 
-                            fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            date = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(fmt.format(date));
-                            fDate = new SimpleDateFormat("MM/dd/yy h:mm a").format(date);
+                            fDate = Info.mySQlToAndroidTime(date);
 
                             buttonRecent2.setText("ID: " + recentID2 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
@@ -159,9 +155,7 @@ public class SearchActivity extends AppCompatActivity {
                             last = rs.getString("last_name");
                             date = rs.getDate("date_received");
 
-                            fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            date = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(fmt.format(date));
-                            fDate = new SimpleDateFormat("MM/dd/yy h:mm a").format(date);
+                            fDate = Info.mySQlToAndroidTime(date);
 
                             buttonRecent3.setText("ID: " + recentID3 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
@@ -172,9 +166,7 @@ public class SearchActivity extends AppCompatActivity {
                             last = rs.getString("last_name");
                             date = rs.getDate("date_received");
 
-                            fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            date = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(fmt.format(date));
-                            fDate = new SimpleDateFormat("MM/dd/yy h:mm a").format(date);
+                            fDate = Info.mySQlToAndroidTime(date);
 
                             buttonRecent4.setText("ID: " + recentID4 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
@@ -185,9 +177,7 @@ public class SearchActivity extends AppCompatActivity {
                             last = rs.getString("last_name");
                             date = rs.getDate("date_received");
 
-                            fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            date = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").parse(fmt.format(date));
-                            fDate = new SimpleDateFormat("MM/dd/yy h:mm a").format(date);
+                            fDate = Info.mySQlToAndroidTime(date);;
 
                             buttonRecent5.setText("ID: " + recentID5 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
