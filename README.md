@@ -15,7 +15,7 @@ Activity Description here.
 What happens when device can connect to DB.
 
 #### Offline
-What happens when device can connect to DB.
+What happens when device can't connect to DB.
 
 ### Home Menu
 Activity Description here.
