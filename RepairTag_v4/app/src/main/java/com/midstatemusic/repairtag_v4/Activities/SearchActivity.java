@@ -4,13 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
@@ -18,9 +19,11 @@ import com.midstatemusic.repairtag_v4.Helpers.Info;
 import com.midstatemusic.repairtag_v4.R;
 
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
+
+import static com.midstatemusic.repairtag_v4.Helpers.Info.address;
+import static com.midstatemusic.repairtag_v4.Helpers.Info.phone;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -28,11 +31,13 @@ public class SearchActivity extends AppCompatActivity {
     public EditText tagID;
     public TextView status, textRecent;
 
-    public Button buttonRecent1, buttonRecent2, buttonRecent3, buttonRecent4, buttonRecent5;
+    ListView listView;
 
     Boolean connectionStatus;
 
     String recentID1, recentID2, recentID3, recentID4, recentID5;
+
+    String recentID1Txt, recentID2Txt, recentID3Txt, recentID4Txt, recentID5Txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +48,53 @@ public class SearchActivity extends AppCompatActivity {
         tagID = findViewById(R.id.editSearchID);
         status = findViewById(R.id.searchInfo);
 
-        buttonRecent1 = findViewById(R.id.recent1);
-        buttonRecent2 = findViewById(R.id.recent2);
-        buttonRecent3 = findViewById(R.id.recent3);
-        buttonRecent4 = findViewById(R.id.recent4);
-        buttonRecent5 = findViewById(R.id.recent5);
-
         textRecent = findViewById(R.id.textMostRecent);
 
         getRecentIDs();
 
+        if (connectionStatus) {
+            listView = findViewById(R.id.mostRecentList);
+            String[] values = new String[]{recentID1Txt, recentID2Txt, recentID3Txt, recentID4Txt, recentID5Txt};
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_expandable_list_item_1, android.R.id.text1, values);
+
+            listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    String itemValue = (String) listView.getItemAtPosition(position);
+
+//                Toast.makeText(getApplicationContext(),
+//                        "Position: "+ position + "  ListItem: " + itemValue , Toast.LENGTH_LONG)
+//                        .show();
+
+                    switch (position) {
+                        case 0:
+                            getFields(recentID1);
+                            break;
+                        case 1:
+                            getFields(recentID2);
+                            break;
+                        case 2:
+                            getFields(recentID3);
+                            break;
+                        case 3:
+                            getFields(recentID4);
+                            break;
+                        case 4:
+                            getFields(recentID5);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            });
+        }
     }
 
     public void onClick (View v){
@@ -60,7 +102,8 @@ public class SearchActivity extends AppCompatActivity {
             case R.id.buttonSearchSubmit:
                 // Hides keyboard when button is pressed
                 InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                assert inputManager != null;
+                inputManager.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
                 Info.id = tagID.getText().toString();
                 connectionStatus = DatabaseConnections.dbConnect();
@@ -85,26 +128,6 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 break;
 
-            case R.id.recent1:
-                getFields(recentID1);
-                break;
-
-            case R.id.recent2:
-                getFields(recentID2);
-                break;
-
-            case R.id.recent3:
-                getFields(recentID3);
-                break;
-
-            case R.id.recent4:
-                getFields(recentID4);
-                break;
-
-            case R.id.recent5:
-                getFields(recentID5);
-                break;
-
             default:
                 break;
         }
@@ -115,8 +138,6 @@ public class SearchActivity extends AppCompatActivity {
         if (connectionStatus) { // Has connection to db
             String first, last, fDate;
             Date date;
-
-            SimpleDateFormat fmt;
 
             String top5 = "select * from records order by id DESC limit 5";
 
@@ -135,7 +156,7 @@ public class SearchActivity extends AppCompatActivity {
 
                             fDate = Info.mySQlToAndroidTime(date);
 
-                            buttonRecent1.setText("ID: " + recentID1 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
+                            recentID1Txt = ("ID: " + recentID1 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
 
                         case 2:
@@ -146,7 +167,7 @@ public class SearchActivity extends AppCompatActivity {
 
                             fDate = Info.mySQlToAndroidTime(date);
 
-                            buttonRecent2.setText("ID: " + recentID2 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
+                            recentID2Txt = ("ID: " + recentID2 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
 
                         case 3:
@@ -157,7 +178,7 @@ public class SearchActivity extends AppCompatActivity {
 
                             fDate = Info.mySQlToAndroidTime(date);
 
-                            buttonRecent3.setText("ID: " + recentID3 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
+                            recentID3Txt = ("ID: " + recentID3 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
 
                         case 4:
@@ -168,7 +189,7 @@ public class SearchActivity extends AppCompatActivity {
 
                             fDate = Info.mySQlToAndroidTime(date);
 
-                            buttonRecent4.setText("ID: " + recentID4 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
+                            recentID4Txt = ("ID: " + recentID4 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
 
                         case 5:
@@ -179,7 +200,7 @@ public class SearchActivity extends AppCompatActivity {
 
                             fDate = Info.mySQlToAndroidTime(date);;
 
-                            buttonRecent5.setText("ID: " + recentID5 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
+                            recentID5Txt = ("ID: " + recentID5 + " \nName: " + last + ", " + first + " \nDate: " + fDate);
                             break;
 
                         default:
@@ -192,20 +213,10 @@ public class SearchActivity extends AppCompatActivity {
                 Log.d("SQL Top 5 Error", e.toString());
             }
 
-
-
         } else {
             // Doesn't have connection to db
-
-            buttonRecent1.setVisibility(View.INVISIBLE);
-            buttonRecent2.setVisibility(View.INVISIBLE);
-            buttonRecent3.setVisibility(View.INVISIBLE);
-            buttonRecent4.setVisibility(View.INVISIBLE);
-            buttonRecent5.setVisibility(View.INVISIBLE);
             textRecent.setVisibility(View.INVISIBLE);
         }
-
-
     }
 
     public void getFields(String id){
@@ -220,11 +231,11 @@ public class SearchActivity extends AppCompatActivity {
             while (rs.next()) {
                 Info.firstName = rs.getString("first_name");
                 Info.lastName = rs.getString("last_name");
-                Info.address = rs.getString("address");
+                address = rs.getString("address");
                 Info.city = rs.getString("city");
                 Info.state = rs.getString("state");
                 Info.zip = rs.getString("zip");
-                Info.phone = rs.getString("phone");
+                phone = rs.getString("phone");
                 Info.email = rs.getString("email");
                 Info.schoolDistrict = rs.getString("school_district");
                 Info.schoolBuilding = rs.getString("school_building");
