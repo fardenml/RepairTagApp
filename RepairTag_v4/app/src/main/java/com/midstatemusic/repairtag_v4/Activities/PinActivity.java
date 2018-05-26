@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.midstatemusic.repairtag_v4.Helpers.DatabaseConnections;
 import com.midstatemusic.repairtag_v4.Helpers.Info;
+import com.midstatemusic.repairtag_v4.Helpers.SqliteHelper;
 import com.midstatemusic.repairtag_v4.R;
 
 import java.sql.ResultSet;
@@ -30,6 +31,8 @@ public class PinActivity extends AppCompatActivity {
 
     Boolean connectionStatus;
 
+    private SqliteHelper mydb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,8 @@ public class PinActivity extends AppCompatActivity {
         login = findViewById(R.id.buttonPinLogin);
         pin = findViewById(R.id.editPin);
         error = findViewById(R.id.textPinError);
+
+        mydb = new SqliteHelper(this);
     }
 
     public void onClick(View v) {
@@ -56,9 +61,11 @@ public class PinActivity extends AppCompatActivity {
 
                 connectionStatus = DatabaseConnections.dbConnect();
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                if (connectionStatus) {
+                    // has connection to database
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
                         try {
                             //String adminQuery = "select id from employees where first_name = \"Admin\"";
 
@@ -84,12 +91,12 @@ public class PinActivity extends AppCompatActivity {
                                 Info.employeeLastName = rs.getString("last_name");
 
                                 startActivity(new Intent(PinActivity.this, MainActivity.class));
-                            } else if (Info.employeeID.equals(Info.adminID)){
+                            } else if (Info.employeeID.equals(Info.adminID)) {
                                 Info.employeeFirstName = "Admin";
                                 Info.employeeLastName = "User";
 
                                 startActivity(new Intent(PinActivity.this, MainActivity.class));
-                            } else{
+                            } else {
                                 nDialog.dismiss();
                                 error.setTextColor(ResourcesCompat.getColor(getResources(), R.color.colorRed, null));
                                 error.setText("Pin Not Found! Please Try Again");
@@ -111,10 +118,15 @@ public class PinActivity extends AppCompatActivity {
                             }
                             Log.d("SQL ERROR", e.toString());
                         }
-                    }
-                }, 1500);
-                break;
+                        }
+                    }, 1500);
+                } else {
+                    // No connection to database
 
+                }
+                break;
+            case R.id.buttonSqlite:
+                mydb.updateLocalEmployees();
             default:
                 break;
         }

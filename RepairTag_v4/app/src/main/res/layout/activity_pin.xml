@@ -12,13 +12,15 @@
     <ImageView
         android:id="@+id/imageHeader"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="272dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSqlite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/midstate_header" />
+        app:srcCompat="@mipmap/midstate_header" />
 
     <TextView
         android:id="@+id/textPinInstructions"
@@ -76,5 +78,17 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPin" />
+
+    <Button
+        android:id="@+id/buttonSqlite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="81dp"
+        android:onClick="onClick"
+        android:text="Sqlite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageHeader" />
 
 </android.support.constraint.ConstraintLayout>
