@@ -4,8 +4,7 @@
     class="sidenav"
     fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
+    [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>
@@ -23,8 +22,13 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>midstate-app</span>
+      <span>Midstate Music</span>
+      <span class="spacer" *ngIf="(isHandset$ | async) == false"></span>
+      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Link 1</a></button>
+      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Link 2</a></button>
+      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Link 3</a></button>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
