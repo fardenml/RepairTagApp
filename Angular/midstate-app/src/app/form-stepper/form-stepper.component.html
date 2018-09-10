@@ -1,0 +1,111 @@
+<mat-horizontal-stepper #stepper>
+  <mat-step [stepControl]="personalFormGroup">
+    <form [formGroup]="personalFormGroup" id="center">
+      <ng-template matStepLabel>Personal Info</ng-template>
+      <mat-form-field id="center">
+        <input matInput placeholder="First Name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Last Name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Street Address" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="City" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="State" value="New York" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Zip Code" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="schoolFormGroup">
+    <form [formGroup]="schoolFormGroup" id="center">
+      <ng-template matStepLabel>School Info</ng-template>
+      <mat-form-field id="center">
+        <input matInput placeholder="School District" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="School Building" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Teacher" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="instrumentFormGroup">
+    <form [formGroup]="instrumentFormGroup" id="center">
+      <ng-template matStepLabel>Instrument Info</ng-template>
+      <mat-form-field id="center">
+        <input matInput placeholder="Instrument" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Brand" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Serial Number" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Mouth Piece" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="descriptionFormGroup">
+    <form [formGroup]="descriptionFormGroup" id="center">
+      <ng-template matStepLabel>Other Info</ng-template>
+      <mat-form-field id="center">
+        <textarea [matTextareaAutosize]=true matInput placeholder="Description" formControlName="fourthCtrl" required></textarea>
+      </mat-form-field>
+      <br>
+      <app-datepicker></app-datepicker>
+      <br>
+      <mat-form-field id="center">
+        <input matInput type="number" placeholder="Price" formControlName="fourthCtrl" required>
+        <span matPrefix>$&nbsp;</span>
+      </mat-form-field>
+      <br>
+      <app-mp-coverage-picker></app-mp-coverage-picker>
+      <br>
+      <mat-form-field id="center">
+        <input matInput placeholder="Status" formControlName="fourthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <div id="center">
+      <button mat-raised-button matStepperPrevious>Back</button>
+      <button mat-raised-button>Submit</button>
+      <br><br>
+      <button mat-raised-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -7,9 +7,9 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item href="#">New Tag</a>
+      <a mat-list-item href="#">Edit Tag</a>
+      <a mat-list-item href="#">Print Tag</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -24,9 +24,9 @@
       </button>
       <span>Midstate Music</span>
       <span class="spacer" *ngIf="(isHandset$ | async) == false"></span>
-      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Link 1</a></button>
-      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Link 2</a></button>
-      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Link 3</a></button>
+      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">New Tag</a></button>
+      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Edit Tag</a></button>
+      <button mat-button *ngIf="(isHandset$ | async) == false"><a href="#">Print Tag</a></button>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>
