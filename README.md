@@ -3,6 +3,8 @@ Repair Tag Android App
 
 This app was created for Midstate Music of CNY, Inc. to create and edit digital instrument repair tags.
 
+A live version of the app can be found here: http://www.michaelfarden.com/RepairTagApp/
+
 **This README is under construction**
 ## Table of Contents
 Will have anchor links for some of the headers
