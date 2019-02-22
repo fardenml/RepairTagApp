@@ -1,4 +1,4 @@
-<mat-horizontal-stepper #stepper>
+<mat-horizontal-stepper labelPosition="bottom" #stepper>
   <mat-step [stepControl]="personalFormGroup">
     <form [formGroup]="personalFormGroup" id="center">
       <ng-template matStepLabel>Personal Info</ng-template>
@@ -76,7 +76,7 @@
   </mat-step>
   <mat-step [stepControl]="descriptionFormGroup">
     <form [formGroup]="descriptionFormGroup" id="center">
-      <ng-template matStepLabel>Other Info</ng-template>
+      <ng-template matStepLabel>Description</ng-template>
       <mat-form-field id="center">
         <textarea [matTextareaAutosize]=true matInput placeholder="Description" formControlName="fourthCtrl" required></textarea>
       </mat-form-field>
@@ -100,7 +100,7 @@
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
+    <ng-template matStepLabel>Complete</ng-template>
     <div id="center">
       <button mat-raised-button matStepperPrevious>Back</button>
       <button mat-raised-button>Submit</button>
