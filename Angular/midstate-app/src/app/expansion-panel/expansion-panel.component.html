@@ -1,0 +1,134 @@
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal Info
+      </mat-panel-title>
+      <mat-panel-description>
+        Enter the name and address
+        <mat-icon>person</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="First Name" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Last Name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Street Address" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="City" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="State" value="New York" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput type="number" placeholder="Zip Code" required>
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        School Info
+      </mat-panel-title>
+      <mat-panel-description>
+        Enter the school district, building, and teacher
+        <mat-icon>directions_bus</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="School District" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="School Building" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Teacher" required>
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Instrument Info
+      </mat-panel-title>
+      <mat-panel-description>
+        Enter the instrument type, brand, and serial number
+        <mat-icon>music_note</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Instrument Type" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Brand" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Serial Number" required>
+    </mat-form-field>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="primary" (click)="nextStep()">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Description
+      </mat-panel-title>
+      <mat-panel-description>
+        Enter the description, price, and choose a due date
+        <mat-icon>event_note</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <textarea [matTextareaAutosize]=true matInput placeholder="Description" required></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Price" formControlName="fourthCtrl" required>
+      <span matPrefix>$&nbsp;</span>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <input matInput placeholder="Status" required>
+    </mat-form-field>
+    &nbsp;
+    <app-mp-coverage-picker></app-mp-coverage-picker>
+    &nbsp;
+    <app-datepicker></app-datepicker>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Previous</button>
+      <button mat-button color="primary" (click)="nextStep()">Complete</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>
